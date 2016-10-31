@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>User list</title>
+    </h:head>
+        <f:metadata>
+            <f:viewAction action="#{dragonUserController.checkAdminLogginStatu()}"/>
+        </f:metadata>
+    <h:body>
+        <h1>User list</h1>
+        <h:form>
+            <h:dataTable var="user" value="#{dragonUserController.user}">
+                <h:column>
+                    <f:facet name="header">First Name</f:facet>
+                    #{user.firstName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Last Name</f:facet>
+                    #{user.lastName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">E-mail</f:facet>
+                    #{user.username}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Date of birth</f:facet>
+                    <h:outputText value="#{user.dateOfBirth}">
+                        <f:convertDateTime pattern="dd/MM/yyyy"/>
+                    </h:outputText>  
+                </h:column>
+<!--                <h:column>
+                    <f:facet name="header">Actions</f:facet>
+                    <h:button value="Edit" outcome="personedit">
+                        <f:param name="person" value="#{person.id}"/>
+                    </h:button>
+                    <h:button value="Delete" outcome="persondelete">
+                        <f:param name="person" value="#{person.id}"/>
+                    </h:button>
+                </h:column>-->
+            </h:dataTable>
+            <p>
+<!--                <h:button value="New Person" outcome="personcreate"/>-->
+                <h:button value="Main Menu" outcome="admin"/>
+            </p>
+        </h:form>
+    </h:body>
+</html>
+

@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Order list</title>
+    </h:head>
+        <f:metadata>
+            <f:viewAction action="#{dragonUserController.checkAdminLogginStatu()}"/>
+        </f:metadata>
+    <h:body>
+        <h1>Order list</h1>
+        <h:form>
+            <h:dataTable var="order" value="#{userOrderController.orderList}" >
+<!--                <h:column >
+                    <f:facet name="header">Order ID</f:facet>
+                        #{order.id}
+                </h:column>-->
+                <h:column>
+                    <f:facet name="header">Product</f:facet>
+                        #{order.product.name}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Price</f:facet>
+                        #{order.product.price}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Amount</f:facet>
+                        #{order.amount}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Total</f:facet>
+                        #{userOrderController.getTotalPrice(order.amount,order.product.price)}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">User Name</f:facet>
+                       #{order.user.username}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Actions</f:facet>
+              
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body>
+</html>
+
